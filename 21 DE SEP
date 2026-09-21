@@ -1,1 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para K 🌻</title>
 
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at center, #241044 0%, #080018 45%, #010008 100%);
+  color: white;
+  font-family: Georgia, serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(#ffffff 1px, transparent 1px),
+    radial-gradient(#ffd95a 1px, transparent 1px);
+  background-size: 55px 55px, 95px 95px;
+  animation: stars 35s linear infinite;
+  opacity: .7;
+}
+
+@keyframes stars {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 500px 1000px, -800px 600px;
+  }
+}
+
+.title {
+  position: fixed;
+  top: 25px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  padding: 0 12px;
+}
+
+h1 {
+  font-size: clamp(22px, 6vw, 46px);
+  color: #ffe66d;
+  text-shadow:
+    0 0 10px #ffcc00,
+    0 0 25px #ff9900;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: clamp(13px, 3.5vw, 19px);
+  color: #fff3ad;
+}
+
+.scene {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(100px, 25vw, 190px);
+  color: #ffe45c;
+  text-shadow:
+    0 0 10px #ffdb32,
+    0 0 35px #ffae00,
+    0 0 75px #ff9900;
+  animation: pulse 3s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(88vw, 650px);
+  height: min(88vw, 650px);
+  margin-left: min(-44vw, -325px);
+  margin-top: min(-44vw, -325px);
+  border: 1px solid rgba(255, 220, 90, .35);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: rotate 22s linear infinite;
+}
+
+.orbit.two {
+  width: min(115vw, 850px);
+  height: min(55vw, 420px);
+  margin-left: min(-57.5vw, -425px);
+  margin-top: min(-27.5vw, -210px);
+  transform: rotateX(65deg) rotateY(20deg);
+  animation-duration: 30s;
+  animation-direction: reverse;
+}
+
+.orbit.three {
+  width: min(135vw, 1000px);
+  height: min(70vw, 520px);
+  margin-left: min(-67.5vw, -500px);
+  margin-top: min(-35vw, -260px);
+  transform: rotateX(70deg) rotateY(-35deg);
+  animation-duration: 38s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg) rotateX(55deg);
+  }
+  to {
+    transform: rotateZ(360deg) rotateX(55deg);
+  }
+}
+
+.item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: clamp(25px, 6vw, 55px);
+  transform-origin: center;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #ffc400);
+}
+
+.item:nth-child(1) {
+  transform: translate(-50%, -50%) translateX(300px);
+}
+
+.item:nth-child(2) {
+  transform: translate(-50%, -50%) translateY(-280px);
+}
+
+.item:nth-child(3) {
+  transform: translate(-50%, -50%) translateX(-300px);
+}
+
+.item:nth-child(4) {
+  transform: translate(-50%, -50%) translateY(280px);
+}
+
+.item:nth-child(5) {
+  transform: translate(-50%, -50%) translate(220px, -180px);
+}
+
+.item:nth-child(6) {
+  transform: translate(-50%, -50%) translate(-220px, 180px);
+}
+
+@keyframes float {
+  0%, 100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -20px;
+  }
+}
+
+.phrase {
+  position: absolute;
+  color: #fff0a0;
+  font-size: clamp(12px, 2.8vw, 21px);
+  white-space: nowrap;
+  text-shadow: 0 0 10px #ffb700;
+  animation: phraseFloat 6s ease-in-out infinite;
+}
+
+.phrase:nth-child(1) {
+  top: 25%;
+  left: 5%;
+}
+
+.phrase:nth-child(2) {
+  top: 35%;
+  right: 4%;
+  animation-delay: 1s;
+}
+
+.phrase:nth-child(3) {
+  bottom: 30%;
+  left: 3%;
+  animation-delay: 2s;
+}
+
+.phrase:nth-child(4) {
+  bottom: 22%;
+  right: 3%;
+  animation-delay: 3s;
+}
+
+.phrase:nth-child(5) {
+  top: 48%;
+  left: 2%;
+  animation-delay: 4s;
+}
+
+.phrase:nth-child(6) {
+  top: 52%;
+  right: 2%;
+  animation-delay: 5s;
+}
+
+@keyframes phraseFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: .65;
+  }
+  50% {
+    transform: translateY(-22px) scale(1.12);
+    opacity: 1;
+  }
+}
+
+.bouquet {
+  position: absolute;
+  font-size: clamp(35px, 9vw, 75px);
+  animation: bouquetMove 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px #ffb900);
+}
+
+.b1 {
+  top: 18%;
+  left: 8%;
+}
+
+.b2 {
+  top: 20%;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+.b3 {
+  bottom: 12%;
+  left: 8%;
+  animation-delay: 4s;
+}
+
+.b4 {
+  bottom: 10%;
+  right: 8%;
+  animation-delay: 6s;
+}
+
+@keyframes bouquetMove {
+  0%, 100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(8deg) translateY(-25px);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">
+  <h1>Si pudiera regalarte el universo 🌻</h1>
+  <div class="subtitle">
+    💌 T.A 3m K✨
+  </div>
+</div>
+
+<div class="scene">
+
+  <div class="center">K✨</div>
+
+  <div class="orbit">
+    <div class="item">🌻🌻</div>
+    <div class="item">🌻🌻</div>
+    <div class="item">🌻🌻🌻🌻🌻</div>
+    <div class="item">🌻</div>
+    <div class="item">💛</div>
+    <div class="item">🌻🌻🌻🌻🌻</div>
+  </div>
+
+  <div class="orbit two">
+    <div class="item">🌻🌻🌻🌻🌻</div>
+    <div class="item">🌻🌻🌻🌻🌻</div>
+    <div class="item">💐</div>
+    <div class="item">🌻</div>
+  </div>
+
+  <div class="orbit three">
+    <div class="item">🌻</div>
+    <div class="item">🌻🌻🌻🌻🌻</div>
+    <div class="item">💛</div>
+    <div class="item">🌻🌻🌻🌻🌻</div>
+  </div>
+
+  <div class="phrase">Tu sonrisa Fack ✨</div>
+  <div class="phrase">Que nunca te falten motivos para sonreír</div>
+  <div class="phrase">Contigo todo florece</div>
+  <div class="phrase">Te mereces todas las flores 🌻</div>
+  <div class="phrase">Mi locura favorita 💛</div>
+  <div class="phrase">Siempre tú, K ✨</div> 
+    <div class="phrase">Eres mi camino ✨</div> 
+    <div class="phrase">Tu sonrisa ilumina todo ✨</div>
+
+
+
+  <div class="bouquet b1">💐</div>
+  <div class="bouquet b2">🌻🌻🌻🌻🌻</div>
+  <div class="bouquet b3">🌻💐</div>
+  <div class="bouquet b4">🌻🌻🌻🌻🌻🌻</div>
+
+</div>
+
+</body>
+</html>
